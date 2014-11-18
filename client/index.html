@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>chatterbox</title>
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+
+  <body>
+
+    <div id="main">
+
+      <header>
+        <h1>Chatterbox</h1>
+      </header>
+
+      <aside class="navigation cf">
+        <div class="friends">
+          <h3 class="friends-header">Friends</h3>
+          <ul id="friends-list"></ul>
+        </div>
+
+        <div class="rooms cf">
+          <h3 class="rooms-header">Rooms</h3>
+          <ul id="rooms-list">
+            <div class="separate"><li><a href="#">lobby</a></li>
+          </ul>
+          <input class="create-room" type="text" placeholder="add rooms here">
+        </div>
+      </aside>
+
+      <section class="messages cf">
+        <h3 class="messages-header">Current Room Messages</h3>
+        <div class="messages-container">
+        </div>
+        <input class="send-message" type="text" placeholder="add messages here">
+      </section>
+
+
+    </div>
+
+    <!-- dependencies -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+
+    <!-- your scripts -->
+    <!-- <script src="env/config.js"></script> -->
+    <script src="scripts/app.js"></script>
+  </body>
+
+</html>
