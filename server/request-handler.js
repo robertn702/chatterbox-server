@@ -25,7 +25,7 @@ var requestHandler = function(request, response) {
   // Do some basic logging.
   var data = {};
   data.results = [];
-  //
+
   // Adding more logging to your server can be an easy way to get passive
   // debugging help, but you should always be careful about leaving stray
   // console.logs in your code.
@@ -33,17 +33,7 @@ var requestHandler = function(request, response) {
 
   // The outgoing status.
   var statusCode;
-
-  var findStatusCode =  function(){
-    if (request.method === 'GET') {
-      statusCode = 200;
-    } else if (request.method === 'POST') {
-      statusCode = 201;
-    } else {
-      statusCode = 404;
-    }
-  };
-  findStatusCode();
+  response.on('finish', fnName);
 
   // See the note below about CORS headers.
   var headers = defaultCorsHeaders;
@@ -66,6 +56,15 @@ var requestHandler = function(request, response) {
   // Calling .end "flushes" the response's internal buffer, forcing
   // node to actually send all the data over to the client.
   response.end(JSON.stringify(data));
+
+  var fnName = function() {
+    // POST
+
+      // success: 201
+    // GET
+      // success: 200
+      // failure: 404 not found
+  }
 };
 
 // These headers will allow Cross-Origin Resource Sharing (CORS).
@@ -83,6 +82,9 @@ var defaultCorsHeaders = {
   "access-control-allow-headers": "content-type, accept",
   "access-control-max-age": 10 // Seconds.
 };
+
+var dataStorage = {};
+dataStorage['string'] = [];
 //------------------------------------------------------------------------------EXPORTS
 var exports = module.exports = {};
 exports.requestHandler = requestHandler;
